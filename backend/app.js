@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get((req,res) => {
+app.get(("/"), (req,res) => {
     res.send("Greetings from the team of the SafeDischarge");
 })
 
