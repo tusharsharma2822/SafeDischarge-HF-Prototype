@@ -1,19 +1,20 @@
-import { generateSummary } from "../services/summary.service.js";
+import { generateAIResponse } from "../services/ai.service.js";
+import { validateResponse } from "../services/validation.service.js";
 
 export const generateSummaryController = async (req, res, next) => {
     try{
         const { patientData } = req.body;
-
+        
         if(!patientData){
-            return res.status(400).json({
-                error: "PatientData is required"
-            });
+            return res.status(400).json({ error: "PatientData required"});
         }
 
-        const result = await generateSummary(patientData);
+        const aiResult = await generateAIResponse(patientData);
+        const validated = validateResponse(aiResult);
 
-        res.status(200).json(result);
-    }catch(err){
-        next(err)
+        res.json(validated);
+
+    }catch(error){
+        next(error)
     }
 };
