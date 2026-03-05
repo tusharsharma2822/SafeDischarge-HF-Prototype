@@ -9,7 +9,8 @@ function PatientForm({ onGenerate }) {
     diagnosis: "",
     vitals: "",
     labs: "",
-    clinicalNotes: "",
+    hospitalCourse: "",
+    medicationsOnDischarge: "",
   });
 
   const handleChange = (e) => {
@@ -89,14 +90,26 @@ function PatientForm({ onGenerate }) {
         />
       </div>
 
-      {/* Clinical Notes */}
+
+      {/* Hospital Course */}
       <div className="mt-4">
         <textarea
-          name="clinicalNotes"
-          placeholder="Clinical Notes"
-          value={formData.clinicalNotes}
+          name="hospitalCourse"
+          placeholder="Hospital Course"
+          value={formData.hospitalCourse}
           onChange={handleChange}
           className="w-full border rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Medications on Discharge */}
+      <div className="mt-4">
+        <textarea
+          name="medicationsOnDischarge"
+          placeholder="Medications on Discharge"
+          value={formData.medicationsOnDischarge}
+          onChange={handleChange}
+          className="w-full border rounded-lg p-3 h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
